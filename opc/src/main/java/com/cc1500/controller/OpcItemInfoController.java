@@ -1,12 +1,11 @@
 package com.cc1500.controller;
 
-import com.cc1500.system.entity.OpcItemInfo;
 import com.cc1500.system.service.OpcItemInfoService;
-import com.cc1500.web.Result.ResultVo;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @Description (OpcItemInfo)表控制层
@@ -20,7 +19,6 @@ public class OpcItemInfoController {
     private OpcItemInfoService opcItemInfoService;
     /**
      * @Description 通过主键查询单条数据
-     * @param id 主键
      * @return 单条数据
      */
     @ResponseBody

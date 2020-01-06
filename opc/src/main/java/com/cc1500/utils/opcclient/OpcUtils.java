@@ -31,14 +31,7 @@ public class OpcUtils {
    private static OPCServer Propertiesserver;
     public static List<String> map1 =  new ArrayList<>(  );
     private static OPCItemProperties itemProperties;
-//    public static void main(String[] args) throws Exception {
-//         HashMap<String, String> ItemIdMap = new HashMap<>();
-//        /**    itemId[] 筛选字符串  */
-//        List<String> ScreenID=new ArrayList<>();
-//        ScreenID.add( "1" );
-//        ItemIdMap = GetMapByFlo( ScreenID );
-//
-//    }
+
     public static  List<String> GetMapByFlo(List<String> ScreenID) throws Exception {
        // Logger.getLogger("org.jinterop").setLevel(Level.OFF);
         long startTime = System.currentTimeMillis();
@@ -139,8 +132,6 @@ public class OpcUtils {
             if("".equals( j )||j==null) {
                 continue;
             }
-
-          //  System.out.println(i+"  " +j+" "+dateTimeNow());
             returnobj.put( j, dumpItemProperties(itemProperties, j))  ;
             i++;
         }
@@ -226,7 +217,6 @@ public class OpcUtils {
                 value = item. getValue().toString();
                 break;
         }
-      //  System.out.println( var1+"   "+ value);
         return value;
     }
 
@@ -237,15 +227,11 @@ public class OpcUtils {
         final Collection<PropertyDescription> properties = itemProperties
                 .queryAvailableProperties(itemID);
         final int[] ids = new int[properties.size()];
-//        System.out.println(String.format("Item Properties for '%s' (count:%d)",
-//               itemID, properties.size()));
         int i = 0;
         for (final PropertyDescription pd : properties) {
             ids[i] = pd.getId();
             i++;
         }
-//        System.out.println("Lookup");
-//        dumpItemPropertiesLookup(itemProperties, itemID, ids);
         System.out.println("Query:"+ (reF++) +" "+itemID);
      return  dumpItemProperties2(itemProperties, itemID, ids);
     }
@@ -255,13 +241,11 @@ public class OpcUtils {
             final int... ids) throws JIException {
         final KeyedResultSet<Integer, JIVariant> values = itemProperties
                 .getItemProperties(itemID, ids);
-        HashMap<Integer, String> map1 =new HashMap<Integer, String> () ;
+        HashMap<Integer, String> map1 =new HashMap< > () ;
 
-        map1.put( 1, values.get( 6 ).getValue().getObjectAsString().getString().toString());
-        map1.put( 2, values.get( 8 ).getValue().getObjectAsString().getString().toString());
-//            System.out.println(String.format(
-//                    "ID: %d, Value: %s, Error Code: %08x", entry.getKey(),
-//                    entry.getValue().toString(), entry.getErrorCode()));
+        map1.put( 1, values.get(6).getValue().getObjectAsString().getString());
+        map1.put( 2, values.get(8).getValue().getObjectAsString().getString());
+
             return map1 ;
     }
 

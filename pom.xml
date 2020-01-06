@@ -7,9 +7,10 @@
 	<version>1.0</version>
 	<modules>
 		<module>admin</module>
-		<!--<module>acs</module>-->
 		<module>framework</module>
 		<module>opc</module>
+		<module>myown</module>
+
 	</modules>
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>

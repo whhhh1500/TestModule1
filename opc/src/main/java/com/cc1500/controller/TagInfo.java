@@ -17,7 +17,7 @@ import static com.cc1500.utils.opcclient.BaseConfiguration.*;
 /**
  * 获取指定Item的Properties
  * 
- * @author Freud
+ * @author whhhh
  * 
  */
 public class TagInfo {
@@ -69,22 +69,13 @@ public class TagInfo {
 				.queryAvailableProperties(itemID);
 		final int[] ids = new int[properties.size()];
 
-//		System.out.println(String.format("Item Properties for '%s' (count:%d)",
-//				itemID, properties.size()));
-
 		int i = 0;
 		for (final PropertyDescription pd : properties) {
 			ids[i] = pd.getId();
-			//System.out.println("ID: " + pd.getId());
-//			System.out.println("Description: " + pd.getDescription());
-//			System.out.println("Variable Type: " + pd.getVarType());
 			i++;
 		}
 
-//		System.out.println("Lookup");
-//		dumpItemPropertiesLookup(itemProperties, itemID, ids);
 
-//		System.out.println("Query");
 		dumpItemProperties2(itemProperties, itemID, ids);
 	}
 
@@ -94,12 +85,7 @@ public class TagInfo {
 		final KeyedResultSet<Integer, JIVariant> values = itemProperties
 				.getItemProperties(itemID, ids);
 			System.out.println(itemID);
-//		for (final KeyedResult<Integer, JIVariant> entry : values) {
 
-////			System.out.println(String.format(
-////					"ID: %d, Value: %s, Error Code: %08x", entry.getKey(),
-////					entry.getValue().toString(), entry.getErrorCode()));
-//		}
 	}
 
 	public static void dumpItemPropertiesLookup(

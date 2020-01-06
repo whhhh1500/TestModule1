@@ -18,9 +18,9 @@ public class StartAddDataListener //implements ApplicationListener<ContextRefres
 //
 //	public void jopc() throws InterruptedException, IllegalArgumentException, UnknownHostException, JIException, AlreadyConnectedException, NotConnectedException, DuplicateGroupException {
 //
-//        System.out.println("\n\n\n_________\n\n数据采集引擎启动 \n\n ________\n\n\n\n");
+//        System.out.println("\n\n\n_________\n\n数据采集启动 \n\n ________\n\n\n\n");
 //    	Log logger = LogFactory.getLog(getClass());// 日志对象，记录日志
-//    	logger.info("数据采集引擎启动");
+//    	logger.info("数据采集启动");
 //
 //
 //		Server server = new Server(
