@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc1500.system.mapper.OpcTagNameTargetMapper">
+
+    <resultMap type="com.cc1500.system.entity.OpcTagNameTarget" id="OpcTagNameTargetMap">
+        <result property="targetId" column="target_id" jdbcType="INTEGER"/>
+        <result property="target" column="target" jdbcType="VARCHAR"/>
+        <result property="targetAlias" column="target_alias" jdbcType="VARCHAR"/>
+        <result property="isactive" column="isactive" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="OpcTagNameTargetMap">
+        select
+          target_id, target, target_alias, isactive
+        from IBMS.opc_tag_name_target
+        where target_id = #{targetId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="OpcTagNameTargetMap">
+        select
+          target_id, target, target_alias, isactive
+        from IBMS.opc_tag_name_target
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="OpcTagNameTargetMap">
+        select
+          target_id, target, target_alias, isactive
+        from IBMS.opc_tag_name_target
+        <where>
+            <if test="targetId != null">
+                and target_id = #{targetId}
+            </if>
+            <if test="target != null and target != ''">
+                and target = #{target}
+            </if>
+            <if test="targetAlias != null and targetAlias != ''">
+                and target_alias = #{targetAlias}
+            </if>
+            <if test="isactive != null">
+                and isactive = #{isactive}
+            </if>
+        </where>
+    </select>
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAlltarget" resultMap="OpcTagNameTargetMap">
+        select
+        target_id, target, target_alias, isactive
+        from IBMS.opc_tag_name_target
+
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="targetId" useGeneratedKeys="true">
+        insert into IBMS.opc_tag_name_target(target, target_alias, isactive)
+        values (#{target}, #{targetAlias}, #{isactive})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update IBMS.opc_tag_name_target
+        <set>
+            <if test="target != null and target != ''">
+                target = #{target},
+            </if>
+            <if test="targetAlias != null and targetAlias != ''">
+                target_alias = #{targetAlias},
+            </if>
+            <if test="isactive != null">
+                isactive = #{isactive},
+            </if>
+        </set>
+        where target_id = #{targetId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from IBMS.opc_tag_name_target where target_id = #{targetId}
+    </delete>
+
+</mapper>

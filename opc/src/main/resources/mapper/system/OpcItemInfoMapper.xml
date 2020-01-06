@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc1500.system.mapper.OpcItemInfoMapper">
+
+    <resultMap type="com.cc1500.system.entity.OpcItemInfo" id="OpcItemInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="itemId" column="item_id" jdbcType="VARCHAR"/>
+        <result property="itemDescription" column="item_description" jdbcType="VARCHAR"/>
+        <result property="tagAddress" column="tag_address" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="OpcItemInfoMap">
+        select
+          id, item_id, item_description, tag_address
+        from IBMS.opc_item_info
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="OpcItemInfoMap">
+        select
+          id, item_id, item_description, tag_address
+        from IBMS.opc_item_info
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="OpcItemInfoMap">
+        select
+          id, item_id, item_description, tag_address
+        from IBMS.opc_item_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="itemId != null and itemId != ''">
+                and item_id = #{itemId}
+            </if>
+            <if test="itemDescription != null and itemDescription != ''">
+                and item_description = #{itemDescription}
+            </if>
+            <if test="tagAddress != null and tagAddress != ''">
+                and tag_address = #{tagAddress}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into IBMS.opc_item_info(item_id, item_description, tag_address)
+        values (#{itemId}, #{itemDescription}, #{tagAddress})
+    </insert>
+    <!--新增所有列-->
+    <insert id="insertOr" keyProperty="id" useGeneratedKeys="true">
+        insert into IBMS.opc_item_info( item_description, tag_address)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.itemDescription},
+            #{item.tagAddress}
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        item_description= values(itemDescription),
+        tag_address= values(tagAddress)
+    </insert>
+    <!--通过主键修改数据-->
+    <update id="update">
+        update IBMS.opc_item_info
+        <set>
+            <if test="itemId != null and itemId != ''">
+                item_id = #{itemId},
+            </if>
+            <if test="itemDescription != null and itemDescription != ''">
+                item_description = #{itemDescription},
+            </if>
+            <if test="tagAddress != null and tagAddress != ''">
+                tag_address = #{tagAddress},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from IBMS.opc_item_info where id = #{id}
+    </delete>
+
+</mapper>
