@@ -39,10 +39,6 @@ spring:
     encoding: utf-8
     # 禁用缓存
     cache: false
-  # 资源信息
-  messages:
-    # 国际化资源文件路径
-    basename: static/i18n/messages
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
