@@ -1,9 +1,9 @@
 package com.cc1500.controller;
 
 import com.cc1500.system.service.OpcItemInfoService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -12,8 +12,11 @@ import javax.annotation.Resource;
  * @author makejava
  * @since 2019-11-12 08:52:21
  */
-@RestController
+@Controller
+@RequestMapping("/filemg/file")
 public class OpcItemInfoController {
+
+    private String PREFIX = "modular/filemq/";
     /** * 服务对象  */
     @Resource
     private OpcItemInfoService opcItemInfoService;
@@ -26,6 +29,12 @@ public class OpcItemInfoController {
     public String show() {
         System.out.println("hello");
         return "index";
+    }
+
+    @RequestMapping("/hello")
+    public String index1() {
+        System.out.println(PREFIX + "newfile.html");
+        return PREFIX + "_newfile.html";
     }
 
 }
