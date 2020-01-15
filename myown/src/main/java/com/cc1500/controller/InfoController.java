@@ -1,11 +1,9 @@
 package com.cc1500.controller;
 
-import com.cc1500.system.service.OpcItemInfoService;
+import io.swagger.annotations.ApiModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.annotation.Resource;
 
 /**
  * @Description (OpcItemInfo)表控制层
@@ -14,12 +12,11 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("/filemg/file")
-public class OpcItemInfoController {
+@ApiModel(description="用户的实体对象")
+public class InfoController {
 
     private String PREFIX = "modular/filemq/";
     /** * 服务对象  */
-    @Resource
-    private OpcItemInfoService opcItemInfoService;
     /**
      * @Description 通过主键查询单条数据
      * @return 单条数据

@@ -1,4 +1,4 @@
-package com.cc1500.web.swagger;
+package com.cc1500.web;
 
 
 import org.springframework.context.annotation.Bean;

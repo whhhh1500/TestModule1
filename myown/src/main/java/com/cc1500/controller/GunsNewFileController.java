@@ -26,13 +26,13 @@ public class GunsNewFileController {
      * @return 单条数据
      */
     @ResponseBody
-    @RequestMapping("/1")
+    @GetMapping("/1")
     public String show() {
         System.out.println("hello");
         return "index";
     }
 
-    @RequestMapping("/hello")
+    @GetMapping("/hello")
     public String index1() {
         System.out.println(PREFIX + "newfile.html");
         return PREFIX + "_newfile.html";
